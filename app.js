@@ -5,7 +5,7 @@ const mongoose = require('mongoose')
 const session = require('express-session')
 const MongoDBStore = require('connect-mongodb-session')(session);
 const store = new MongoDBStore({
-  // uri: 'mongodb://localhost:27017/sarahah',
+  // uri: 'mongodb://localhost:27017/linkedin',
   uri: 'mongodb+srv://admin:admin@cluster0.xnab1.mongodb.net/test',
   collection: 'sessions'
 })
@@ -36,7 +36,8 @@ app.get('/logout', (req, res) => {
 })
 
 // database
-mongoose.connect('mongodb://localhost:27017/linkedin', { useNewUrlParser: true, useUnifiedTopology: true })
+// mongoose.connect('mongodb://localhost:27017/linkedin', { useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.connect('mongodb+srv://admin:admin@cluster0.xnab1.mongodb.net/test', { useNewUrlParser: true, useUnifiedTopology: true })
 
 // port
 app.listen(process.env.PORT || 3000, () => {
