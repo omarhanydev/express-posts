@@ -1,0 +1,37 @@
+
+<%- include('shared/header.ejs') %> 
+
+<div class="container mt-5 pt-5">
+    <div class="row">
+        <div class="col-md-8 m-auto card p-5">
+            <div class="">
+                <h3>Change Password</h3>
+                <hr>
+                <form action="/handleChangePassword" method="POST">
+                    <div class="my-2">
+                        <input placeholder="Enter Old Password" type="password" name="old_password" class="form-control" value="<%= form_data.old_password %>">
+                        <% if (form_errors.find(e=>e.param=='old_password')) { %>
+                            <div class="alert text-left h6 alert-danger py-2">
+                                Please type your old password correctly
+                            </div>
+                        <% } %>
+                    </div>
+                    <input placeholder="New Password" type="password" name="password" class="form-control my-2" value="<%= form_data.password %>">
+                    <input placeholder="Repeat Password" type="password" name="confirm_password" class="form-control my-2" value="<%= form_data.confirm_password %>">
+                    <div class="my-2">
+                        <% if (form_errors.find(e=>e.param=='password')) { %>
+                            <div class="alert text-left h6 alert-danger py-2">
+                                Please type strong password using capital and small letters combined with numbers and symbols
+                                <br>
+                                e.g. john@Doe2020
+                            </div>
+                        <% } %>
+                    </div>
+                    <button type="submit" class="btn btn-info mt-3">Save Settings</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<%- include('shared/footer.ejs') %> 

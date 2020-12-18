@@ -1,0 +1,62 @@
+
+<%- include('shared/header-index.ejs') %> 
+
+<div class="overlay">
+    <!-- ================================spinner============================== -->
+    <div class="parent-spinner">
+        <div class="spinner">
+            <div class="double-bounce1"></div>
+            <div class="double-bounce2"></div>
+        </div>
+    </div>
+    <!-- ================================/spinner============================== -->
+
+    <!-- ======================login form================================= -->
+
+    <div class="container pt-5">
+        <div class="row">
+            <div class="col-md-6 m-auto p-5">
+                <div class="form p-5 ">
+            <h2 class="text-center text-white">Sign In</h2>
+
+                    <form action="/handlelogin" method="POST">
+                        <div class="my-4">
+                            <input placeholder="Email" type="email" name="email" class="form-control inp" type="text" value="<%= form_data.email %>">
+                            <% if (form_errors.find(error => error.param === 'email')) { %>
+                                <div class="alert text-left h6 alert-danger py-2">
+                                    Please type valid email
+                                </div>
+                            <% } %>
+                            <% if (form_data_errors.find(error => error.param === 'email')) { %>
+                                <div class="alert text-left h6 alert-danger py-2">
+                                    <%= form_data_errors.find(error => error.param === 'email').msg %>
+                                </div>
+                            <% } %>
+                        </div>
+                        <div class="my-4">
+                            <input placeholder="Password" type="password" name="password" class="form-control inp" type="text" value="<%= form_data.password %>">
+                            <% if (form_errors.find(error => error.param === 'password')) { %>
+                                <div class="alert text-left h6 alert-danger py-2">
+                                    Please type valid password
+                                </div>
+                            <% } %>
+                            <% if (form_data_errors.find(error => error.param === 'password')) { %>
+                                <div class="alert text-left h6 alert-danger py-2">
+                                    <%= form_data_errors.find(error => error.param === 'password').msg %>
+                                </div>
+                            <% } %>
+                        </div>
+                        <button class="btn btn-outline-info w-100 text-white">Login</button>
+                        <p class="text-center text-white pt-3">
+                            Don't Have an account..?  <a href="/signup" class="text-white" >Sign Up Here</a>
+                        </p>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
+<%- include('shared/footer.ejs') %> 
